@@ -21,14 +21,12 @@ public class AppointmentBean {
     @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false)
     private DoctorBean doctorBean;
-    @Column(nullable = false)
-    private LocalDateTime appointmentTime;
     @OneToOne
-    @Column(name="patient_id",nullable = false)
+  //  @Column(name="patient_id",nullable = false)
+    @PrimaryKeyJoinColumn
     private PatientBean patientBean;
     @Column(nullable = false)
     private String appointmentStatus;
-
     @Column(nullable = false)
     private LocalDateTime appointmentDateTime;
 

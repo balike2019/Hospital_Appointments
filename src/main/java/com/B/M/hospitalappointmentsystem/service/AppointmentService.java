@@ -4,6 +4,8 @@ import com.B.M.hospitalappointmentsystem.DAO.AppointmentDAO;
 import com.B.M.hospitalappointmentsystem.bean.AppointmentBean;
 import com.B.M.hospitalappointmentsystem.exceptions.AppointmentConflictException;
 import com.B.M.hospitalappointmentsystem.exceptions.AppointmentNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +60,29 @@ public class AppointmentService {
         // Example: Check if there's an appointment at the same time
         return appointmentRepository.existsByAppointmentDateTime(newAppointmentDateTime);
     }
+    @Transactional
+    public void updateAppointment(Long id, AppointmentBean updatedAppointment) {
+        // Check if the appointment with the given ID exists in the database
+        AppointmentBean existingAppointment = appointmentRepository.findById(id).orElse(null);
 
+        if (existingAppointment == null) {
+            // Handle the case where the appointment is not found (e.g., throw an exception)
+            throw new EntityNotFoundException("Appointment with ID " + id + " not found");
+        }
+
+        // Update the fields of the existing appointment with the new values
+        existingAppointment.setId(updatedAppointment.getId());
+        existingAppointment.setAppointmentDateTime(updatedAppointment.getAppointmentDateTime());
+        //existingAppointment.setDescription(updatedAppointment.getDescription());
+
+        // Save the updated appointment back to the database
+        appointmentRepository.save(existingAppointment);
     }
+}
+
+
+
+
+
+
+
