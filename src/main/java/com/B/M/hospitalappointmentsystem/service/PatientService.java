@@ -1,15 +1,19 @@
 package com.B.M.hospitalappointmentsystem.service;
 import com.B.M.hospitalappointmentsystem.DAO.PatientDAO;
-import com.B.M.hospitalappointmentsystem.PatientInterface;
 import com.B.M.hospitalappointmentsystem.bean.PatientBean;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PatientService implements PatientInterface {
+public class PatientService {
+
+    //private static final Logger logger = (Logger) LogManager.getLogger(PatientService.class);
     private final PatientDAO patientDAO;
     //private final PatientInterface patientInterface;
+
+
 
     @Autowired
     public PatientService(PatientDAO patientDAO) {

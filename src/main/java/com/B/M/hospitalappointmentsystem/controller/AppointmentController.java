@@ -37,6 +37,7 @@ public class AppointmentController {
     @PostMapping
     public void createAppointment(@RequestBody AppointmentBean appointment) {
         appointmentService.scheduleAppointment(appointment);
+        System.out.println("Appointment has been created");
     }
 
     // HTTP PUT method to update an existing appointment

@@ -31,4 +31,7 @@ public class PatientBean {
     private String address;
     @Column(nullable = false)
     private Long phoneNumber;
+
+    public PatientBean(long l, String john) {
+    }
 }
