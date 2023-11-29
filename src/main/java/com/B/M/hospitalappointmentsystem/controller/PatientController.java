@@ -21,6 +21,7 @@ public class PatientController {
 
     @GetMapping("/all")
     public ResponseEntity<List<PatientBean>> getAllPatients() {
+        System.out.println("Hello");
         List<PatientBean> patients = patientService.getAllPatients();
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
