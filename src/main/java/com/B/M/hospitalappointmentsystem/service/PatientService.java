@@ -35,8 +35,10 @@ public class PatientService {
 
     public PatientBean updatePatient(Long id, PatientBean updatedPatient) {
         if (patientDAO.existsById(id)) {
+            System.out.println("ok");
             updatedPatient.setId(id);
             return patientDAO.save(updatedPatient);
+
         }
         return null; // Handle not found scenario
     }
