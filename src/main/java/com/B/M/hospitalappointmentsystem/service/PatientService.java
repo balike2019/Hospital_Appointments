@@ -39,7 +39,11 @@ public class PatientService {
             updatedPatient.setId(id);
             return patientDAO.save(updatedPatient);
 
+        }else{
+            System.out.println("The patient does't exist in the Db");
+
         }
+        // TODO: 12/6/2023
         return null; // Handle not found scenario
     }
 
